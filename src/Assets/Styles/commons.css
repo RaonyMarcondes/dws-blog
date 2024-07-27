@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+:root {
+  --color-black: #000000;
+  --color-white: #ffffff;
+
+  --primary-darkest: #020318;
+  --primary-darker: #020318;
+  --primary-dark: #0b0e3a;
+
+  --teal-light: #00bfc1;
+  --teal-medium: #009598;
+  --teal-dark: #006c6e;
+
+  --pink-light: #ef4c84;
+  --pink-medium: #d31450;
+  --pink-dark: #8c1038;
+
+  --indigo-light: #5b7bc1;
+  --indigo-medium: #3559aa;
+  --indigo-dark: #2c498a;
+
+  /* Grey Shades */
+  --grey-lightest: #f0f0f2;
+  --grey-lighter: #e0e2e6;
+  --grey-light: #c0c2c8;
+  --grey-medium: #9ea0a5;
+  --grey-dark: #7f8185;
+  --grey-darker: #5e5f63;
+  --grey-darkest: #202122;
+}
+
+* {
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+}
