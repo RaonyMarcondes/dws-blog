@@ -26,10 +26,10 @@ export const NavBar = styled.header`
       float: right;
       background-color: transparent;
       border: none;
-      padding: 13px 10px 13px 13px;
+      padding: 10px 8px 10px 10px;
       font-size: 16px;
       font-weight: 600;
-      margin: -13px 0 0 3px;
+      margin: -10px 0 0 3px;
       border-radius: 32px;
       transition: background-color 200ms linear;
 
