@@ -1,11 +1,20 @@
 import styled from "styled-components";
 
 export const FiltersBar = styled.nav`
+  display: flex;
+  flex: 1;
+  width: 100%;
   max-width: 314px;
   background-color: var(--grey-lightest);
   box-shadow: var(--grey-light) 0px 3px 24px;
   padding: 16px;
+  margin-bottom: 16px;
+  margin-right: 16px;
   border-radius: 16px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
 
   .icon {
     float: left;
