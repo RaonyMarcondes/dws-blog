@@ -1,7 +1,7 @@
 import React from "react";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
-import { Card, CategoryPill } from "./PostCart.styles";
+import { Card, CategoryPill } from "./PostCard.styles";
 
 import { Post, Category } from "../../Types/types";
 

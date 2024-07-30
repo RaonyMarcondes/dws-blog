@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "./PostsList.styles";
-import PostCard from "../PostCard/PostCart";
+import PostCard from "../PostCard/PostCard";
 
 // MOCKED POST
 const post = {
