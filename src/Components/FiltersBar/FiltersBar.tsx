@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Sidebar } from "../FiltersBar/FiltersBar.styles";
 import Icon from "@mdi/react";
 import { mdiTune } from "@mdi/js";
+import StoreContext from "../../Context/StoreContext";
 
 import { Category, Author } from "../../Types/types";
 
@@ -13,6 +14,8 @@ interface FiltersBarProps {
 const FiltersBar: React.FC<FiltersBarProps> = ({ categories, authors }) => {
   const [activeCategories, setActiveCategories] = useState<Category[]>([]);
   const [activeAuthors, setActiveAuthors] = useState<Author[]>([]);
+
+  const { posts, setFilteredPosts } = React.useContext(StoreContext);
 
   const toggleCategory = (category: Category) => {
     if (activeCategories.includes(category)) {
@@ -32,6 +35,25 @@ const FiltersBar: React.FC<FiltersBarProps> = ({ categories, authors }) => {
       return;
     }
     setActiveAuthors([...activeAuthors, author]);
+  };
+
+  const filterPostsBy = () => {
+    const categoryIds = activeCategories.map((category) => category.id);
+    const authorsIds = activeAuthors.map((category) => category.id);
+
+    return posts.filter((post) => {
+      if (categoryIds.length === 0 || authorsIds.length === 0) {
+        return (
+          post.categories.some((category) =>
+            categoryIds.includes(category.id)
+          ) || authorsIds.includes(post.author.id)
+        );
+      }
+      return (
+        post.categories.some((category) => categoryIds.includes(category.id)) &&
+        authorsIds.includes(post.author.id)
+      );
+    });
   };
 
   return (
@@ -71,7 +93,13 @@ const FiltersBar: React.FC<FiltersBarProps> = ({ categories, authors }) => {
         </ul>
       </div>
 
-      <button>Apply Filters</button>
+      <button
+        onClick={() =>
+          setFilteredPosts(filterPostsBy().length ? filterPostsBy() : posts)
+        }
+      >
+        Apply Filters
+      </button>
     </Sidebar>
   );
 };

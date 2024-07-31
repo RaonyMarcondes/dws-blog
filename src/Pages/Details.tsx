@@ -12,23 +12,14 @@ export const Content = styled.div`
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 16px;
+`;
 
-  .loader-box {
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-
-  .loader {
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
+export const LoaderWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 `;
 
 const Details: React.FC = () => {
@@ -50,11 +41,9 @@ const Details: React.FC = () => {
       <AppBar />
       <Content>
         {isLoading && (
-          <div className="loader">
-            <div className="loader-box">
-              <Loader />
-            </div>
-          </div>
+          <LoaderWrapper>
+            <Loader />
+          </LoaderWrapper>
         )}
         {post && !isLoading && <PostDetails post={post} />}
       </Content>
