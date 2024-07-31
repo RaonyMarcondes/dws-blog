@@ -24,11 +24,13 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
           </div>
           <h1>{post?.title}</h1>
           <div className="description">{post?.content}</div>
-          <div className="categories">
-            {post?.categories?.map((category: Category, index: number) => (
-              <CategoryPill key={index}>{category?.name}</CategoryPill>
-            ))}
-          </div>
+          {post?.categories?.length > 0 && (
+            <div className="categories">
+              {post?.categories?.map((category: Category, index: number) => (
+                <CategoryPill key={index}>{category?.name}</CategoryPill>
+              ))}
+            </div>
+          )}
         </div>
       </Link>
     </Card>

@@ -90,7 +90,7 @@ export const Details = styled.div`
 
   aside {
     max-width: 876px;
-    margin: 0 auto;
+    margin: 0 auto 64px auto;
     margin-top: 42px;
     padding-top: 42px;
     border-top: 1px solid var(--grey-light);

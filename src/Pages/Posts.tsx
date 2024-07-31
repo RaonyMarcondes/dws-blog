@@ -3,9 +3,21 @@ import PostsList from "../Components/PostsList/PostsList";
 import AppBar from "../Components/AppBar/AppBar";
 import NavBar from "../Components/NavBar/NavBar";
 import FiltersBar from "../Components/FiltersBar/FiltersBar";
+import Loader from "../Components/Loader/Loader";
 import styled from "styled-components";
+import StoreContext from "../Context/StoreContext";
+
+export const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
 
 export const Content = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 16px 64px 16px;
@@ -21,54 +33,27 @@ export const ContentWrapper = styled.div`
   }
 `;
 
-const categories = [
-  {
-    id: "a3979472-2f20-11ef-a347-325096b39f47",
-    name: "Technology",
-    createdAt: "2024-07-25T16:19:30.376Z",
-    updatedAt: "2024-07-25T16:19:30.550Z",
-    postId: "cc8a8c63-2f82-4745-8b6e-28f88ff73fdd",
-  },
-  {
-    id: "a394572-2f20-11ef-a347-325096b39f47",
-    name: "Artificial Intelligence",
-    createdAt: "2024-07-25T16:19:30.376Z",
-    updatedAt: "2024-07-25T16:19:30.550Z",
-    postId: "cc8a8c63-2f82-4745-8b6e-28f88ff73fdd",
-  },
-];
+export const Posts: React.FC = () => {
+  const { isLoading, posts, authors, categories } =
+    React.useContext(StoreContext);
 
-const authors = [
-  {
-    id: "c6fddf84-2f20-11ef-8f88-325096b39f47",
-    name: "Emily Davis",
-    profilePicture:
-      "https://dws-tech-test-assets.s3.amazonaws.com/images/avataaars-3.png",
-    createdAt: "2024-07-25T16:19:30.408Z",
-    updatedAt: "2024-07-25T16:19:30.408Z",
-  },
-  {
-    id: "c6freg84-2f20-11ef-8f88-325096b39f47",
-    name: "Davis Emily",
-    profilePicture:
-      "https://dws-tech-test-assets.s3.amazonaws.com/images/avataaars-3.png",
-    createdAt: "2024-07-25T16:19:30.408Z",
-    updatedAt: "2024-07-25T16:19:30.408Z",
-  },
-];
-
-const Posts: React.FC = () => {
   return (
-    <>
+    <Main>
       <AppBar />
       <NavBar />
       <Content>
         <ContentWrapper>
-          <FiltersBar categories={categories} authors={authors} />
-          <PostsList />
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <>
+              <FiltersBar categories={categories} authors={authors} />
+              <PostsList posts={posts} />
+            </>
+          )}
         </ContentWrapper>
       </Content>
-    </>
+    </Main>
   );
 };
 

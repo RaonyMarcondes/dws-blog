@@ -5,6 +5,7 @@ import { Details } from "./PostDetails.styles";
 import Icon from "@mdi/react";
 import { mdiArrowLeft } from "@mdi/js";
 import { format } from "date-fns";
+import StoreContext from "../../Context/StoreContext";
 
 import { Post } from "../../Types/types";
 
@@ -13,6 +14,10 @@ interface PostDetailsProps {
 }
 
 const PostDetails: React.FC<PostDetailsProps> = ({ post }) => {
+  const { posts } = React.useContext(StoreContext);
+
+  const recentPosts = posts.slice(0, 3);
+
   return (
     <Details>
       <div>
@@ -48,9 +53,9 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post }) => {
       <aside>
         <h2>Latest articles </h2>
         <div className="latest">
-          <PostCard post={post} />
-          <PostCard post={post} />
-          <PostCard post={post} />
+          {recentPosts.map((post: Post) => (
+            <PostCard key={post.id} post={post} />
+          ))}
         </div>
       </aside>
     </Details>
