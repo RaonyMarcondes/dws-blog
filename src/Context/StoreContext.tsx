@@ -6,6 +6,7 @@ interface StoreContextProps {
   authors: Author[];
   posts: Post[];
   categories: Category[];
+  setPosts: (posts: Post[]) => void;
 }
 
 const StoreContext = createContext<StoreContextProps>({
@@ -13,6 +14,7 @@ const StoreContext = createContext<StoreContextProps>({
   authors: [],
   posts: [],
   categories: [],
+  setPosts: () => {},
 });
 
 export default StoreContext;

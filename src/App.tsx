@@ -36,7 +36,9 @@ const App = () => {
   }, []);
 
   return (
-    <StoreContext.Provider value={{ isLoading, authors, posts, categories }}>
+    <StoreContext.Provider
+      value={{ isLoading, authors, posts, categories, setPosts }}
+    >
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Posts />} />
         <Route path="/post/:id" element={<Details />} />
