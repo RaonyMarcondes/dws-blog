@@ -16,8 +16,6 @@ export const Main = styled.div`
 export const Content = styled.div`
   display: flex;
   flex: 1;
-  justify-content: center;
-  align-items: center;
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 16px 64px 16px;
@@ -34,7 +32,7 @@ export const ContentWrapper = styled.div`
 `;
 
 export const Posts: React.FC = () => {
-  const { isLoading, posts, authors, categories } =
+  const { isLoading, filteredPosts, authors, categories } =
     React.useContext(StoreContext);
 
   return (
@@ -43,12 +41,11 @@ export const Posts: React.FC = () => {
       <NavBar />
       <Content>
         <ContentWrapper>
-          {isLoading ? (
-            <Loader />
-          ) : (
+          {isLoading && <Loader />}
+          {!isLoading && filteredPosts.length > 0 && (
             <>
               <FiltersBar categories={categories} authors={authors} />
-              <PostsList posts={posts} />
+              <PostsList posts={filteredPosts} />
             </>
           )}
         </ContentWrapper>
